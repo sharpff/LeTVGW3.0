@@ -87,7 +87,7 @@
 #endif
 
 #ifndef VERSION
-#define VERSION    0x12345678
+#define VERSION    0x00020003 // app + sdk
 #endif
 /****************************************************************************/
 /***    Type Definitions                          ***/
@@ -324,9 +324,11 @@ PUBLIC void APP_vProcessIncomingSerialCommands ( uint8    u8RxByte )
                 ZNC_BUF_U8_UPD  ( &au8values[ 0 ], u8Status,      u8Length );
                 ZNC_BUF_U8_UPD  ( &au8values[ 1 ], u8SeqNum,      u8Length );
                 ZNC_BUF_U16_UPD ( &au8values[ 2 ], u16PacketType, u8Length );
+                #if 0
                 vSL_WriteMessage ( E_SL_MSG_STATUS,
                                    u8Length,
                                    au8values );
+                #endif
                 vSL_WriteMessage ( E_SL_MSG_VERSION_LIST,
                                    sizeof ( uint32 ),
                                    ( uint8* ) &u32Version );
